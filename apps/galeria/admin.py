@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Importando Model de galeria:
-from galeria.models import Fotografia
+from apps.galeria.models import Fotografia
 
 # Personalizando admin:
 class ListandoFotografias(admin.ModelAdmin):
