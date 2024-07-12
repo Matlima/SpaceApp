@@ -37,7 +37,7 @@ class CadastroForms(forms.Form):
             }
         )
     )
-    email_cadastro = forms.EmailField(
+    email = forms.EmailField(
         label="E-mail",
         required=True,
         max_length=100,
