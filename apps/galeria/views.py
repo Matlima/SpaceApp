@@ -11,6 +11,9 @@ from django.contrib import auth
 # Importa biblioteca de Alertas e mensagens do django:
 from django.contrib import messages
 
+# Importando Forms:
+from apps.galeria.forms import FotografiaForms
+
 
 def index(request):
     # Validação de entrada de usuario:
@@ -43,3 +46,27 @@ def buscar(request):
             # Filtra dentro do nome se contem a palavra 'VARIAVEL__icontains'
             fotografias = fotografias.filter(nome__icontains=nome_a_buscar)
     return render(request, "galeria/buscar.html", {"cards": fotografias})
+
+
+
+def nova_imagem(request):
+    # Validação de entrada de usuario:
+    if not request.user.is_authenticated:
+        messages.error(request, "Usuário não logado")
+        return redirect('login')
+    # Criar o formulário:    
+    form = FotografiaForms()
+    # Valida se o form é POST
+    if request.method == 'POST':
+        form = FotografiaForms(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Nova forografia cadastrada!')
+            return redirect('index')
+    return render(request, 'galeria/nova_imagem.html', {'form': form})
+
+def editar_imagem(request):
+    pass
+
+def deletar_imagem(request):
+    pass
