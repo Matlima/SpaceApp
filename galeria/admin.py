@@ -11,12 +11,13 @@ class ListandoFotografias(admin.ModelAdmin):
     list_display_links = ("id", "nome")
     # Adicionando campo de busca no admin:
     search_fields = ("nome",)
-    # Adicionando filtro por categoria:
-    list_filter = ("categoria",)
+    # Adicionando filtro por categoria e usuário:
+    list_filter = ("categoria","usuario",)
     # Adicionando para editar o publicado diretamente:
     list_editable = ("publicada",)
     # Adicionando paginação no admin:
     list_per_page = 10
+    
 
 # Envio de dados para mostrar no admin:
 admin.site.register(Fotografia, ListandoFotografias)
