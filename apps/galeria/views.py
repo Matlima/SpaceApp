@@ -45,7 +45,7 @@ def buscar(request):
         if nome_a_buscar:
             # Filtra dentro do nome se contem a palavra 'VARIAVEL__icontains'
             fotografias = fotografias.filter(nome__icontains=nome_a_buscar)
-    return render(request, "galeria/buscar.html", {"cards": fotografias})
+    return render(request, "galeria/index.html", {"cards": fotografias})
 
 
 
